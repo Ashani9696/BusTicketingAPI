@@ -1,14 +1,26 @@
 const express = require('express');
-const connectDB = require('./config/db'); // Adjust the path based on your file structure
+const dotenv = require('dotenv');
+const connectDB = require('./config/db');
 
-const app = express();
+// Load environment variables
+dotenv.config();
 
 // Connect to MongoDB
 connectDB();
 
-// Middleware and routes
+// Initialize Express app
+const app = express();
+
+// Middleware to parse JSON
 app.use(express.json());
+
+// Example route
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
 
 // Start the server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
