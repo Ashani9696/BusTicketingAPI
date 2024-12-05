@@ -1,4 +1,5 @@
 const Bus = require('../models/Bus');
+const Route = require('../models/Route')
 
 exports.getAllBuses = async (req, res) => {
     try {
